@@ -8,6 +8,7 @@ from ._env import (
     UVICORN_SSL_CERTFILE,
     UVICORN_PORT,
     UVICORN_SSL_KEYFILE,
+    DEBUG,
 )
 from ._bot import BOT, DP
 from ._info import VERSION
@@ -25,4 +26,5 @@ __all__ = [
     "UVICORN_SSL_CERTFILE",
     "UVICORN_PORT",
     "UVICORN_SSL_KEYFILE",
+    "DEBUG",
 ]
