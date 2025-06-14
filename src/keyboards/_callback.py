@@ -6,6 +6,7 @@ from eiogram.utils.callback_data import CallbackData
 class SectionType(StrEnum):
     HOME = "hm"
     SETTING = "st"
+    SERVER = "sv"
 
 
 class ActionType(StrEnum):
@@ -16,8 +17,17 @@ class ActionType(StrEnum):
     CREATE = "cr"
 
 
+class UpdateType(StrEnum):
+    REMARK = "mr"
+    ENABLE = "nb"
+    DISABLE = "ds"
+    SERVER_CONFIG = "sc"
+    REMOVE = "rm"
+
+
 class InlineCB(CallbackData, prefix="a"):
     section: SectionType = SectionType.HOME
     action: ActionType = ActionType.MENU
     target: Optional[Union[str, int]] = None
     command: Optional[Union[str, StrEnum]] = None
+    approval: Optional[bool] = None

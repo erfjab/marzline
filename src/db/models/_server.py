@@ -43,6 +43,14 @@ class Server(Base):
         """Check if server is available for new agencies"""
         return self.enable and self.access
 
+    def format(self) -> dict:
+        return {
+            "remark": self.remark,
+            "enable": self.enable,
+            "type": self.type,
+            "config": "\n".join(f"{k}:{v}" for k, v in self.config.items()),
+        }
+
     @classmethod
     def get_by_id(cls, db: Session, id: int) -> Optional["Server"]:
         """Get server by ID"""
@@ -118,3 +126,12 @@ class Server(Base):
             server.access = access
 
         return server
+
+    @classmethod
+    def remove(cls, db: Session, server_id: int) -> bool:
+        server = cls.get_by_id(db, server_id)
+        if not server:
+            return True
+        db.delete(server)
+        db.flush()
+        return True
