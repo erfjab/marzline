@@ -30,7 +30,7 @@ class InlineKB:
             )
         )
 
-        kb.row(*buttons)
+        kb.row(*buttons, size=2)
 
     @classmethod
     def home(cls) -> InlineKeyboardMarkup:
