@@ -5,6 +5,7 @@ from eiogram.filters import StatsFilter, Text
 
 from src.keyboards import InlineCB, InlineKB, SectionType, ActionType, UpdateType
 from src.db import Session, Server, User
+from src.clients import ClinetManager
 from src.language import MesText
 from src.utils import ResourceNotFoundError, DuplicateError, PatternValidationError
 
@@ -113,14 +114,20 @@ async def input_handler(
             messages = message.text.split(" ")
             if len(messages) != 3:
                 raise PatternValidationError()
+            config = {
+                "username": messages[0],
+                "password": messages[1],
+                "host": messages[2],
+            }
+            token = await ClinetManager.generate_access_token(
+                config=config, server_type=server.type
+            )
+            if not token:
+                raise ResourceNotFoundError()
             Server.update(
                 db,
                 server_id=server.id,
-                config={
-                    "username": messages[0],
-                    "password": messages[1],
-                    "host": messages[2],
-                },
+                config=config,
             )
 
     await stats.clear_all()

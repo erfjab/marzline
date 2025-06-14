@@ -23,3 +23,8 @@ class MesText(StrEnum):
     FAILED = "❌ Unsuccessful"
     FORGET = "Ok..."
     APPROVAL = "❔ Are you sure?"
+    ERROR_PATTERN: str = "⚠️ لطفا متن را طبق الگوی تعریف شده وارد کنید."
+    ERROR_DUPLICATE: str = "⚠️ ورودی تکراری، لطفا مورد غیرتکراری وارد کنید."
+    ERROR_UNAVAILABLE: str = "⚠️ سرویس در حال حاضر در دسترس نمی‌باشد."
+    ERROR_INTEGER: str = "⚠️ ورودی شما باید عدد باشد."
+    ERROR_NOT_FOUND: str = "⚠️ آیتم موردنظر یافت نشد."
