@@ -4,10 +4,13 @@ from ._env import (
     TELEGRAM_LOGGER_CHANNEL_ID,
     SQLALCHEMY_DATABASE_URL,
 )
+from ._bot import BOT, DP
 
 __all__ = [
     "TELEGRAM_ADMIN_IDS",
     "TELEGRAM_API_TOKEN",
     "TELEGRAM_LOGGER_CHANNEL_ID",
     "SQLALCHEMY_DATABASE_URL",
+    "BOT",
+    "DP",
 ]
