@@ -32,6 +32,13 @@ class User(Base):
     def is_owner(self) -> bool:
         return self.chat_id in TELEGRAM_ADMIN_IDS
 
+    def format(self) -> dict:
+        return {
+            "chat_id": self.chat_id,
+            "full_name": self.full_name,
+            "username": self.username,
+        }
+
     @classmethod
     def get(cls, db: Session, *, chat_id: int) -> Optional["User"]:
         """Get a user with chatid"""
